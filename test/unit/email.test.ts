@@ -6,13 +6,13 @@
  */
 
 import { Pattern, validatePatternSchema } from "@sudoo/pattern";
+import { Verifier, VerifyResult } from "@sudoo/verify";
 import { expect } from "chai";
 import * as Chance from "chance";
 import { createEmailPattern } from "../../src";
 
 describe('Given (Email) Patterns', (): void => {
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('placeholder');
 
     it('should be able to create pattern object', (): void => {
@@ -21,5 +21,19 @@ describe('Given (Email) Patterns', (): void => {
         const validation: boolean = validatePatternSchema(pattern);
 
         expect(validation).to.be.true;
+    });
+
+    it('should be able to verify simple email', (): void => {
+
+        const pattern: Pattern = createEmailPattern();
+        const verifier: Verifier = Verifier.create(pattern);
+
+        const result: VerifyResult = verifier.verify(chance.email());
+
+        expect(result).to.be.deep.equal({
+
+            succeed: true,
+            invalids: [],
+        });
     });
 });
