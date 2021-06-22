@@ -17,7 +17,7 @@ export const createEmailPattern = (): Pattern => {
                 return false;
             }
 
-            const regexp: RegExp = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]{2,}$/;
+            const regexp: RegExp = /^[a-z0-9.!$%&*-_]+@[a-z0-9]+\.[a-z]{2,}$/;
 
             return regexp.test(String(value).toLowerCase());
         },

@@ -65,6 +65,20 @@ describe('Given (Email) Patterns', (): void => {
         });
     });
 
+    it('should be able to verify email with symbol', (): void => {
+
+        const pattern: Pattern = createEmailPattern();
+        const verifier: Verifier = Verifier.create(pattern);
+
+        const result: VerifyResult = verifier.verify('hel!l--o_.123@256.live');
+
+        expect(result).to.be.deep.equal({
+
+            succeed: true,
+            invalids: [],
+        });
+    });
+
     it('should be able to reject email with invalid domain', (): void => {
 
         const pattern: Pattern = createEmailPattern();
