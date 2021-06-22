@@ -1,0 +1,41 @@
+{
+  "name": "@sudoo/pattern-chore",
+  "version": "1.0.0",
+  "description": "Chore Patterns",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SudoDotDog/Sudoo-Pattern-Chore.git"
+  },
+  "author": "WMXPY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SudoDotDog/Sudoo-Pattern-Chore/issues"
+  },
+  "homepage": "https://github.com/SudoDotDog/Sudoo-Pattern-Chore#readme",
+  "peerDependencies": {
+    "@sudoo/pattern": "*"
+  },
+  "devDependencies": {
+    "@sudoo/io": "^1.8.0",
+    "@sudoo/pattern": "^1.6.1",
+    "@sudoo/triforce": "^2.8.27"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "instrument": true,
+    "reporter": [
+      "json",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "sourceMap": true
+  }
+}
