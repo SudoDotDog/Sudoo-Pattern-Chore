@@ -90,7 +90,25 @@ describe('Given (Email) Patterns', (): void => {
         expect(result).to.be.deep.equal(createVerifyResult(
             false,
             [
-                createInvalid("match validate function", email, "value", []),
+                createInvalid(`${email} is not a valid email address`, email, "value", []),
+            ],
+        ));
+    });
+
+    it('should be able to reject email with invalid domain - override invalid message', (): void => {
+
+        const pattern: Pattern = createEmailPattern({
+            invalidMessage: () => "invalid message",
+        });
+        const verifier: Verifier = Verifier.create(pattern);
+
+        const email: string = 'hello123@256.123';
+        const result: VerifyResult = verifier.verify(email);
+
+        expect(result).to.be.deep.equal(createVerifyResult(
+            false,
+            [
+                createInvalid("invalid message", email, "value", []),
             ],
         ));
     });

@@ -12,7 +12,7 @@ export type CrateEmailPatternOptions = {
     readonly role?: string;
 };
 
-export const createEmailPattern = (options: CrateEmailPatternOptions): Pattern => {
+export const createEmailPattern = (options: CrateEmailPatternOptions = {}): Pattern => {
 
     return {
 
