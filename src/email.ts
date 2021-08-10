@@ -6,11 +6,18 @@
 
 import { Pattern } from "@sudoo/pattern";
 
-export const createEmailPattern = (): Pattern => {
+export type CrateEmailPatternOptions = {
+
+    readonly invalidMessage?: (value?: any) => string;
+    readonly role?: string;
+};
+
+export const createEmailPattern = (options: CrateEmailPatternOptions): Pattern => {
 
     return {
 
         type: 'custom',
+        role: options.role ?? 'email',
         validate: (value: any) => {
 
             if (typeof value !== 'string') {
@@ -21,5 +28,9 @@ export const createEmailPattern = (): Pattern => {
 
             return regexp.test(String(value).toLowerCase());
         },
+        invalidMessage: options.invalidMessage ?? ((value?: any) => {
+
+            return `${value} is not a valid email address`;
+        }),
     };
 };
