@@ -13,7 +13,7 @@ import { createEmailPattern } from "../../src";
 
 describe('Given (Email) Patterns', (): void => {
 
-    const chance: Chance.Chance = new Chance('placeholder');
+    const chance: Chance.Chance = new Chance('pattern-core-email');
 
     it('should be able to create pattern object', (): void => {
 
